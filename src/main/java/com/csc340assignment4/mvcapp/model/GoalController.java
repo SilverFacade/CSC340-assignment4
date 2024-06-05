@@ -19,22 +19,28 @@ public class GoalController {
     }
 
     @GetMapping("/{id}")
-    public String viewGoal(@PathVariable("id") int id, Model model) {
+    public String getGoalById(@PathVariable("id") int id, Model model) {
         model.addAttribute("goal", goalService.getGoalById(id));
         return "goal-detail";
     }
 
-    @GetMapping("/create")
-    public String addNewGoal(Model model) {
-        model.addAttribute("goal", new Goal());
-        return "goal-form";
+    @PostMapping("/create")
+    public String addNewGoal(Goal goal) {
+        goalService.addNewGoal(goal);
+        return "redirect:/goals/all";
     }
 
-    @PostMapping("/goals")
-    public String saveGoal(@ModelAttribute Goal goal) {
-        goalService.saveGoal(goal);
-        return "redirect:/goals";
-    }
+//    @GetMapping("/create")
+//    public String addNewGoal(Model model) {
+//        model.addAttribute("goal", new Goal());
+//        return "goal-form";
+//    }
+
+//    @PostMapping
+//    public String saveGoal(@ModelAttribute Goal goal) {
+//        goalService.saveGoal(goal);
+//        return "redirect:/goals";
+//    }
 
     @PostMapping("/update")
     public String updateGoal(Goal goal) {
@@ -48,11 +54,11 @@ public class GoalController {
         return "goal-form";
     }
 
-    @RequestMapping(name = "/{id}", method = RequestMethod.GET)
-    public String getGoalById(@PathVariable int id, Model model) {
-        model.addAttribute("goal", goalService.getGoalById(id));
-        return "goal-detail";
-    }
+//    @RequestMapping(name = "/{id}", method = RequestMethod.GET)
+//    public String getGoalById(@PathVariable int id, Model model) {
+//        model.addAttribute("goal", goalService.getGoalById(id));
+//        return "goal-detail";
+//    }
 
     @GetMapping("/delete/{id}")
     public String deleteGoalById(@PathVariable int id) {

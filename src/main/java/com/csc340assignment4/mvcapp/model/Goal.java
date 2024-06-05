@@ -20,8 +20,8 @@ public class Goal {
     private Date targetDate;
     private String status;
 
-    @OneToMany(mappedBy = "goal", cascade = CascadeType.ALL)
-    private List<Task> tasks;
+//    @OneToMany(mappedBy = "goal", cascade = CascadeType.ALL)
+//    private List<Task> tasks;
 
     public Goal() {
     }
@@ -72,10 +72,10 @@ public class Goal {
     public void setStatus(String status) {
         this.status = status;
     }
-    public List<Task> getTasks() {
-        return tasks;
-    }
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
+//    public List<Task> getTasks() {
+//        return tasks;
+//    }
+//    public void setTasks(List<Task> tasks) {
+//        this.tasks = tasks;
+//    }
 }
