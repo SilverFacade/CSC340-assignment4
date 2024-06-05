@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Goal Detail</title>
+</head>
+<body>
+<h1 th:text="${goal.title}">Goal Title</h1>
+<p th:text="${goal.details}">Goal Details</p>
+<p>Status: <span th:text="${goal.status}">Goal Status</span></p>
+<p>Target Date: <span th:text="${goal.targetDate}">Goal Target Date</span></p>
+<h2>Tasks</h2>
+<a th:href="@{/tasks/new/{goalId}(goalId=${goal.goalId})}">Add Task</a>
+<ul>
+    <li th:each="task : ${goal.tasks}">
+        <span th:text="${task.title}">Task Title</span> - <span th:text="${task.status}">Task Status</span>
+        <a th:href="@{/tasks/{id}(id=${task.taskId})}">View</a>
+        <a th:href="@{/tasks/edit/{id}(id=${task.taskId})}">Edit</a>
+        <a th:href="@{/tasks/delete/{id}(id=${task.taskId})}">Delete</a>
+    </li>
+</ul>
+<a href="/goals">Back to Goals</a>
+</body>
+</html>

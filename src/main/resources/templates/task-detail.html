@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task Detail</title>
+</head>
+<body>
+<h1 th:text="${task.title}">Task Title</h1>
+<p th:text="${task.details}">Task Details</p>
+<p>Status: <span th:text="${task.status}">Task Status</span></p>
+<a th:href="@{/goals/{id}(id=${task.goal.goalId})}">Back to Goal</a>
+</body>
+</html>
